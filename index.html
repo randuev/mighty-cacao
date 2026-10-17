@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mighty Cacao — Craft Cacao, Delivered</title>
+<meta name="description" content="Small-batch cacao, drinking chocolate and bars, delivered fresh to your door. Order before 2pm for same-day delivery in Sydney.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍫</text></svg>">
+</head>
+<body>
+
+<!-- Announcement bar -->
+<div class="announce">🚚 Same-day delivery in Sydney on orders before 2pm &nbsp;·&nbsp; Free delivery over $50</div>
+
+<!-- Header -->
+<header class="header" id="top">
+  <div class="container header-inner">
+    <a class="logo" href="#top" aria-label="Mighty Cacao home">
+      <svg class="logo-mark" viewBox="0 0 48 48" width="38" height="38" aria-hidden="true">
+        <defs>
+          <linearGradient id="podg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#d98e3f"/><stop offset="1" stop-color="#8a4a22"/>
+          </linearGradient>
+        </defs>
+        <path d="M24 4c10 0 17 9 17 21S34 44 24 44 7 35 7 23 14 4 24 4z" fill="url(#podg)"/>
+        <path d="M24 6v36M16 9c1 11 1 23 0 32M32 9c-1 11-1 23 0 32M24 4c3-2 6-2 8-1" stroke="#3d2317" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        <path d="M24 4c-2-2-6-3-9-2" stroke="#4e7a4e" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+      </svg>
+      <span class="logo-text">Mighty<span>Cacao</span></span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#shop">Shop</a>
+      <a href="#delivery">Delivery</a>
+      <a href="#about">About</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <button class="cart-btn" id="cartBtn" aria-label="Open cart">
+      🛒 <span class="cart-count" id="cartCount">0</span>
+      <span class="cart-total" id="cartBtnTotal">$0.00</span>
+    </button>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="hero-copy">
+      <p class="eyebrow">Small-batch · Single-origin · Sydney-roasted</p>
+      <h1>Potent cacao.<br>Delivered <em>mighty</em> fresh.</h1>
+      <p class="hero-sub">Stone-ground drinking chocolate, raw cacao powder, nibs and bars — roasted in small batches and brought to your door the same day.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#shop">Order now</a>
+        <a class="btn btn-ghost" href="#delivery">How delivery works</a>
+      </div>
+      <ul class="hero-badges">
+        <li>🌱 Ethically sourced</li>
+        <li>🚚 Same-day metro delivery</li>
+        <li>♻️ Compostable packaging</li>
+      </ul>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="hero-circle"></div>
+      <svg viewBox="0 0 300 320" width="300" height="320">
+        <defs>
+          <linearGradient id="podBig" x1="0" y1="0" x2="0.8" y2="1">
+            <stop offset="0" stop-color="#e5a04e"/><stop offset="1" stop-color="#7a3d1c"/>
+          </linearGradient>
+          <linearGradient id="mug" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#fff8ec"/><stop offset="1" stop-color="#eadbc2"/>
+          </linearGradient>
+        </defs>
+        <path d="M150 18c52 0 88 48 88 112s-38 104-88 104-88-40-88-104S98 18 150 18z" fill="url(#podBig)"/>
+        <path d="M150 24v208M104 36c6 64 6 130 0 184M196 36c-6 64-6 130 0 184M126 28c12 62 12 128 0 194M174 28c-12 62-12 128 0 194" stroke="#4a2818" stroke-width="3" fill="none" stroke-linecap="round" opacity=".55"/>
+        <path d="M150 18c10-10 24-12 34-8M150 18c-8-9-22-12-32-9" stroke="#4e7a4e" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <text x="150" y="300" text-anchor="middle" font-size="20" fill="#f7efe3" font-family="DM Sans, sans-serif" letter-spacing="3">EST. 2026</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- Shop -->
+<section class="shop" id="shop">
+  <div class="container">
+    <div class="section-head">
+      <h2>The Cacao Shelf</h2>
+      <p>Everything roasted, ground and packed this week. Add to cart, choose your delivery slot, done.</p>
+    </div>
+    <div class="filter-bar" id="filterBar" role="tablist" aria-label="Product categories"></div>
+    <div class="grid" id="productGrid"></div>
+  </div>
+</section>
+
+<!-- Delivery -->
+<section class="delivery" id="delivery">
+  <div class="container">
+    <div class="section-head">
+      <h2>Delivery, made easy</h2>
+      <p>We drive. You chocolate.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Build your cart</h3>
+        <p>Pick your cacao, choose quantities. Your cart remembers itself, even if you close the tab.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Pick a slot</h3>
+        <p>Same-day before 2pm, or schedule tomorrow and later. Morning, afternoon or evening windows.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>We knock, you open</h3>
+        <p>Your driver texts on approach. Leave-at-door contactless is one tap away at checkout.</p>
+      </div>
+    </div>
+    <div class="delivery-card">
+      <div class="dc-row"><span>Flat rate, Sydney metro</span><strong>$6.00</strong></div>
+      <div class="dc-row"><span>Orders over $50</span><strong class="free">FREE</strong></div>
+      <div class="dc-row"><span>Same-day cutoff</span><strong>2:00pm</strong></div>
+      <div class="dc-row"><span>Regional NSW (posted)</span><strong>$10.00 · 2–4 days</strong></div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="about" id="about">
+  <div class="container about-inner">
+    <div class="about-copy">
+      <h2>Built on beans with backbone</h2>
+      <p>Mighty Cacao started as a weekend roaster with one stone grinder and a stubborn belief: chocolate should taste like where it came from. We work directly with two cooperatives in Ecuador's Sumaco valley, pay above fair-trade rates, and roast in batches small enough to name.</p>
+      <p>No vanillin shortcuts, no skim-milk powders, no mystery. Just cacao, cane sugar, and the occasional sea salt — delivered fast so it reaches you the way we packed it.</p>
+      <div class="about-stats">
+        <div><strong>72h</strong><span>roast-to-door max</span></div>
+        <div><strong>2</strong><span>partner co-ops</span></div>
+        <div><strong>100%</strong><span>compostable packs</span></div>
+      </div>
+    </div>
+    <div class="about-panel" aria-hidden="true">
+      <blockquote>"The drinking chocolate tastes like someone actually cared."<cite>— Marlowe, Inner West</cite></blockquote>
+      <blockquote>"Ordered at 1pm, sipping at 5pm. Same day, no notes."<cite>— Dea, Bondi</cite></blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="section-head"><h2>Frequently asked</h2></div>
+    <details><summary>Do you deliver outside Sydney?</summary><p>Yes — regional NSW and interstate is posted via courier, $10 flat, 2–4 business days. Metro same-day is at checkout by default.</p></details>
+    <details><summary>What if nobody's home?</summary><p>Tick “leave at door” at checkout, or your driver will text you to reschedule the window at no charge.</p></details>
+    <details><summary>How fresh is “mighty fresh”?</summary><p>Everything is roasted within 72 hours of delivery. Best before dates are 12+ months out on dry goods.</p></details>
+    <details><summary>Can I pay on delivery?</summary><p>Yes — pay by card on pickup at the door, or pay online at checkout. Whichever you prefer.</p></details>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <div>
+      <span class="logo-text small">Mighty<span>Cacao</span></span>
+      <p>Craft cacao, delivered mighty fresh.<br>Sydney, Australia.</p>
+    </div>
+    <div class="footer-links">
+      <a href="#shop">Shop</a>
+      <a href="#delivery">Delivery</a>
+      <a href="#about">About</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div class="footer-contact">
+      <p>hello@mightycacao.au<br>0400 000 000</p>
+      <p class="hours">Roastery pickup: Sat 9–2, Marrickville</p>
+    </div>
+  </div>
+  <div class="copyright">© 2026 Mighty Cacao Pty Ltd</div>
+</footer>
+
+<!-- Cart drawer -->
+<div class="overlay" id="overlay" hidden></div>
+<aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart" aria-hidden="true">
+  <div class="cart-head">
+    <h3>Your cart</h3>
+    <button class="icon-btn" id="cartClose" aria-label="Close cart">✕</button>
+  </div>
+  <div class="ship-bar">
+    <p id="shipMsg">Add <strong>$50.00</strong> more for free delivery 🚚</p>
+    <div class="ship-track"><div class="ship-fill" id="shipFill"></div></div>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-foot">
+    <div class="cart-totals">
+      <div><span>Subtotal</span><span id="cartSubtotal">$0.00</span></div>
+      <div><span>Delivery</span><span id="cartDelivery">—</span></div>
+      <div class="grand"><span>Total</span><span id="cartGrand">$0.00</span></div>
+    </div>
+    <button class="btn btn-primary btn-block" id="checkoutBtn" disabled>Checkout</button>
+  </div>
+</aside>
+
+<!-- Checkout modal -->
+<div class="modal" id="checkoutModal" aria-hidden="true" role="dialog" aria-labelledby="coTitle">
+  <div class="modal-card">
+    <button class="icon-btn modal-x" id="coClose" aria-label="Close checkout">✕</button>
+    <div id="coView">
+      <h3 id="coTitle">Delivery details</h3>
+      <form id="orderForm" novalidate>
+        <div class="field-row">
+          <label>Name<input required name="name" autocomplete="name" placeholder="Jane Cocoa"></label>
+          <label>Phone<input required name="phone" type="tel" autocomplete="tel" placeholder="04XX XXX XXX"></label>
+        </div>
+        <label>Email<input required name="email" type="email" autocomplete="email" placeholder="jane@example.com"></label>
+        <label>Delivery address<input required name="address" autocomplete="street-address" placeholder="12 Chocolate Lane, Marrickville NSW 2204"></label>
+        <div class="field-row">
+          <label>Date<select name="date" id="dateSelect"></select></label>
+          <label>Window<select name="slot">
+            <option>Morning (9am–1pm)</option>
+            <option>Afternoon (1pm–5pm)</option>
+            <option>Evening (5pm–8pm)</option>
+          </select></label>
+        </div>
+        <label class="check"><input type="checkbox" name="leave"> Leave at door (contactless)</label>
+        <label class="check"><input type="checkbox" name="notes" id="notesToggle"> Order notes</label>
+        <label id="notesWrap" hidden>Notes<textarea name="notes" rows="2" placeholder="Buzzer 2B, dog is friendly…"></textarea></label>
+        <fieldset class="pay">
+          <legend>Payment</legend>
+          <label class="radio"><input type="radio" name="pay" value="card-online" checked> Pay online (card) <span>demo</span></label>
+          <label class="radio"><input type="radio" name="pay" value="pay-on-delivery"> Pay at the door (card/EOI)</label>
+        </fieldset>
+        <div class="co-summary" id="coSummary"></div>
+        <button class="btn btn-primary btn-block" type="submit" id="placeOrder">Place order</button>
+      </form>
+    </div>
+    <div id="coDone" hidden>
+      <div class="done-mark">🎉</div>
+      <h3>Order confirmed</h3>
+      <p class="order-no" id="orderNo"></p>
+      <p id="doneMsg"></p>
+      <div class="co-summary" id="doneSummary"></div>
+      <button class="btn btn-primary btn-block" id="doneClose">Back to the shelf</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
