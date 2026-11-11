@@ -14,6 +14,9 @@ const PRODUCTS = [
   { id: "bar-mint", name: "Mint Crisp Dark Bar", cat: "bars", price: 9, size: "100g", emoji: "🌿", bg: "#c8c1a0", desc: "Dark cacao, peppermint oil, crisp rice." },
   { id: "gift-box", name: "Mighty Gift Box", cat: "gifts", price: 45, size: "5 items", emoji: "🎁", bg: "#e2c49c", tag: "Gift", desc: "Bar selection + drinking chocolate + nibs in a keepsake box." },
   { id: "bundle", name: "Sunday Bundle", cat: "gifts", price: 38, size: "3 items", emoji: "🧺", bg: "#dcc9ab", desc: "Powder, nibs and a 70% bar — the everyday starter kit." },
+  { id: "bl-lotus", name: "Blue Lotus Loose Leaf", cat: "botanicals", price: 12, size: "50g", emoji: "🪷", bg: "#ddd2ea", tag: "Evening", desc: "Whole food-grade Egyptian blue lotus flowers. Steep slow, sip slower." },
+  { id: "bl-night", name: "Blue Lotus Night Cacao", cat: "botanicals", price: 16, size: "250g", emoji: "🌙", bg: "#cfc3e0", tag: "New", desc: "Our 68% drinking chocolate blended with blue lotus petals. The nightcap that owes you nothing." },
+  { id: "bl-ritual", name: "Night Ritual Box", cat: "botanicals", price: 28, size: "2 items", emoji: "🕯️", bg: "#c9b8dc", desc: "Night Cacao + loose leaf lotus + muslin strainer in a keepsake box." },
 ];
 
 const FREE_SHIP_THRESHOLD = 50;
@@ -26,6 +29,7 @@ const CATS = [
   { key: "drinking", label: "Drinking chocolate" },
   { key: "bars", label: "Bars" },
   { key: "pantry", label: "Pantry" },
+  { key: "botanicals", label: "Botanicals" },
   { key: "gifts", label: "Gifts" },
 ];
 

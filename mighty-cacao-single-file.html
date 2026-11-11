@@ -497,6 +497,7 @@ form input.invalid, form select.invalid { border-color: #c0392b; box-shadow: 0 0
     <details><summary>What if nobody's home?</summary><p>Tick “leave at door” at checkout, or your driver will text you to reschedule the window at no charge.</p></details>
     <details><summary>How fresh is “mighty fresh”?</summary><p>Everything is roasted within 72 hours of delivery. Best before dates are 12+ months out on dry goods.</p></details>
     <details><summary>Can I pay on delivery?</summary><p>Yes — pay by card on pickup at the door, or pay online at checkout. Whichever you prefer.</p></details>
+    <details><summary>Is blue lotus safe?</summary><p>Our blue lotus is food-grade and safe as an occasional evening infusion. It can make you drowsy — start with one cup, and skip it if you're pregnant, breastfeeding, or planning to drive.</p></details>
   </div>
 </section>
 
@@ -607,6 +608,9 @@ const PRODUCTS = [
   { id: "bar-mint", name: "Mint Crisp Dark Bar", cat: "bars", price: 9, size: "100g", emoji: "🌿", bg: "#c8c1a0", desc: "Dark cacao, peppermint oil, crisp rice." },
   { id: "gift-box", name: "Mighty Gift Box", cat: "gifts", price: 45, size: "5 items", emoji: "🎁", bg: "#e2c49c", tag: "Gift", desc: "Bar selection + drinking chocolate + nibs in a keepsake box." },
   { id: "bundle", name: "Sunday Bundle", cat: "gifts", price: 38, size: "3 items", emoji: "🧺", bg: "#dcc9ab", desc: "Powder, nibs and a 70% bar — the everyday starter kit." },
+  { id: "bl-lotus", name: "Blue Lotus Loose Leaf", cat: "botanicals", price: 12, size: "50g", emoji: "🪷", bg: "#ddd2ea", tag: "Evening", desc: "Whole food-grade Egyptian blue lotus flowers. Steep slow, sip slower." },
+  { id: "bl-night", name: "Blue Lotus Night Cacao", cat: "botanicals", price: 16, size: "250g", emoji: "🌙", bg: "#cfc3e0", tag: "New", desc: "Our 68% drinking chocolate blended with blue lotus petals. The nightcap that owes you nothing." },
+  { id: "bl-ritual", name: "Night Ritual Box", cat: "botanicals", price: 28, size: "2 items", emoji: "🕯️", bg: "#c9b8dc", desc: "Night Cacao + loose leaf lotus + muslin strainer in a keepsake box." },
 ];
 
 const FREE_SHIP_THRESHOLD = 50;
@@ -619,6 +623,7 @@ const CATS = [
   { key: "drinking", label: "Drinking chocolate" },
   { key: "bars", label: "Bars" },
   { key: "pantry", label: "Pantry" },
+  { key: "botanicals", label: "Botanicals" },
   { key: "gifts", label: "Gifts" },
 ];
 
