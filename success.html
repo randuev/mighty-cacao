@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order confirmed — Mighty Cacao</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root { --cocoa-900:#2e1a10; --cocoa-500:#6f4e37; --copper:#b0653a; --gold:#e5a04e; --cream:#f7efe3; --paper:#fffaf1; --cream-2:#efe3d0; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:"DM Sans",system-ui,sans-serif; background:var(--cream); color:var(--cocoa-900); min-height:100vh; display:flex; align-items:center; justify-content:center; padding:1.5rem; }
+  .card { background:var(--paper); border-radius:18px; box-shadow:0 20px 60px rgba(46,26,16,.18); max-width:480px; width:100%; padding:2.5rem 2.2rem; text-align:center; }
+  .mark { font-size:3.2rem; margin-bottom:.4rem; }
+  h1 { font-family:"Fraunces",serif; font-size:1.7rem; margin-bottom:.6rem; }
+  p { color:var(--cocoa-500); margin-bottom:.5rem; }
+  .amount { font-family:"Fraunces",serif; font-size:2rem; color:var(--copper); margin:.8rem 0; }
+  .meta { background:var(--cream); border-radius:12px; padding:1rem 1.2rem; text-align:left; font-size:.9rem; color:var(--cocoa-500); margin:1.2rem 0; }
+  .meta div { display:flex; justify-content:space-between; gap:1rem; padding:.2rem 0; }
+  .meta span:last-child { text-align:right; color:var(--cocoa-900); font-weight:500; }
+  .btn { display:inline-block; margin-top:1rem; background:var(--cocoa-900); color:var(--cream); padding:.8rem 1.8rem; border-radius:999px; font-weight:700; text-decoration:none; }
+  .btn:hover { background:#241209; }
+  .warn { color:#a33; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="mark">🎉</div>
+  <h1>Order confirmed</h1>
+  <p>Thanks — your cacao is being packed with care.</p>
+  <div class="amount" id="amount"></div>
+  <div class="meta" id="meta"></div>
+  <p>A receipt is in your inbox from Stripe.<br>We'll text when the driver is on the way. 🚚</p>
+  <a class="btn" href="./">Back to the shelf</a>
+</div>
+<script>
+const WORKER_URL = ""; // same Worker URL as app.js
+// Clear the shop cart — the order is complete
+try { localStorage.removeItem("mighty-cart-v1"); } catch {}
+const id = new URLSearchParams(location.search).get("session_id");
+if (id && WORKER_URL) {
+  fetch(`${WORKER_URL}/checkout-status?session_id=${encodeURIComponent(id)}`)
+    .then(r => r.json())
+    .then(s => {
+      if (s.error || s.status !== "complete") {
+        document.getElementById("amount").textContent = "";
+        if (s.error) document.querySelector(".warn") || document.body.insertAdjacentHTML("beforeend", "");
+        return;
+      }
+      document.getElementById("amount").textContent = "$" + Number(s.amount_total).toFixed(2);
+      const m = s.metadata || {};
+      const rows = [];
+      if (m.customer_name) rows.push(["Name", m.customer_name]);
+      if (m.delivery_date) rows.push(["Delivery", `${m.delivery_date} · ${m.delivery_window || ""}`]);
+      if (m.address) rows.push(["Address", m.address]);
+      if (m.leave_at_door === "yes") rows.push(["Handoff", "Leave at door"]);
+      if (m.notes) rows.push(["Notes", m.notes]);
+      document.getElementById("meta").innerHTML = rows.map(r => `<div><span>${r[0]}</span><span>${r[1]}</span></div>`).join("");
+    })
+    .catch(() => {});
+}
+</script>
+</body>
+</html>

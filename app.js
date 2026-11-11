@@ -23,6 +23,7 @@ const FREE_SHIP_THRESHOLD = 50;
 const DELIVERY_FEE = 6;
 const REGIONAL_FEE = 10;
 const SAME_DAY_CUTOFF_HOUR = 14; // 2pm Sydney
+const WORKER_URL = ""; // set to "https://mighty-cacao-checkout.<your-subdomain>.workers.dev" when the Worker is deployed
 
 const CATS = [
   { key: "all", label: "All" },
@@ -287,19 +288,44 @@ $("#orderForm").addEventListener("submit", e => {
   btn.disabled = true;
   btn.textContent = "Placing order…";
 
-  // Simulated order placement — swap for a real endpoint when you have one,
-  // e.g. fetch('/api/orders', {method:'POST', body: JSON.stringify(payload)})
   const payload = collectPayload();
-  setTimeout(() => {
-    const orderNo = "MC-" + Date.now().toString(36).toUpperCase().slice(-6);
-    showConfirmation(orderNo, payload);
-    cart = {};
-    saveCart();
-    renderGrid();
-    renderCart();
-    btn.disabled = false;
-    btn.textContent = "Place order";
-  }, 900);
+
+  if (!WORKER_URL) {
+    // Checkout Worker not wired yet — simulated confirmation
+    setTimeout(() => {
+      const orderNo = "MC-" + Date.now().toString(36).toUpperCase().slice(-6);
+      showConfirmation(orderNo, payload);
+      cart = {};
+      saveCart();
+      renderGrid();
+      renderCart();
+      btn.disabled = false;
+      btn.textContent = "Place order";
+    }, 900);
+    return;
+  }
+
+  // Real Stripe Checkout: server verifies totals, returns hosted checkout URL
+  fetch(`${WORKER_URL}/create-checkout`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  })
+    .then(r => r.json())
+    .then(j => {
+      if (j.url) {
+        window.location.href = j.url; // redirect to checkout.stripe.com
+      } else {
+        toast(j.error || "Checkout failed — please try again");
+        btn.disabled = false;
+        btn.textContent = "Place order";
+      }
+    })
+    .catch(() => {
+      toast("Can't reach checkout — check connection");
+      btn.disabled = false;
+      btn.textContent = "Place order";
+    });
 });
 
 function collectPayload() {
